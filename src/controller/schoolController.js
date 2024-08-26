@@ -1,4 +1,6 @@
 import connection from "../dbConnection/dbConnection.js";
+import { getDistance } from "geolib";
+
 
 // Endpoint: /addSchool
 
@@ -51,7 +53,7 @@ const addSchool = (req,res) => {
 const listSchool = (req,res) => {
     
     const { latitude, longitude } = req.query;
-
+    
     // Validation
     if (!latitude || !longitude) {
       return res.status(400).json({ error: 'Latitude and longitude are required.' });
@@ -60,7 +62,7 @@ const listSchool = (req,res) => {
     const userLocation = { latitude: parseFloat(latitude), longitude: parseFloat(longitude) };
   
     // Fetch all schools from the database
-    db.query('SELECT * FROM schools', (err, results) => {
+    connection.query('SELECT * FROM schools', (err, results) => {
       if (err) {
         console.error('Error fetching data:', err.stack);
         return res.status(500).json({ error: 'Failed to retrieve schools.' });
