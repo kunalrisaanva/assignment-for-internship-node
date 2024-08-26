@@ -2,10 +2,10 @@ import mysql from "mysql2";
 
 
 const connection = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"kunal",
-    database:"school_management"
+    host:"sql12.freesqldatabase.com",
+    user:"sql12727942",
+    password:"3Rq1ncFxAl",
+    database:"sql12727942"
 });
 
 
